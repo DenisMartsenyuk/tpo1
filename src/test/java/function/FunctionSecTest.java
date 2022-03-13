@@ -9,28 +9,26 @@ import static java.lang.Math.PI;
 
 public class FunctionSecTest {
 
-    final double EPS = 1.0e-5;
+    private final double EPS = 1.0e-5;
 
     @ParameterizedTest
     @ValueSource(doubles = {(PI / 2), (3 * PI) / 2, (PI / 2) + 2 * PI, ((3 * PI) / 2) + (2 * PI)})
-    @DisplayName("ыфвыаип") //todo назвать
-    public void undetermined(double x) {
+    @DisplayName("Test function by NaN result")
+    public void nanTest(double x) {
         Assertions.assertEquals(FunctionSec.calc(x), Double.NaN);
     }
 
-    // ( -3 * Pi / 2 + 2 * Pi * n; - Pi / 2 + 2 * Pi * n )
     @ParameterizedTest
-    @ValueSource(doubles = {-19 * PI / 6, -5 * PI / 6, 8 * PI / 6, 17 * PI / 6})
-    @DisplayName("ыфвыаип") //todo назвать
-    public void firstAreaEq(double x) {
+    @ValueSource(doubles = {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9})
+    @DisplayName("Test function in doubles values")
+    void doublesTest(double x) {
         Assertions.assertEquals(FunctionSec.calc(x), 1 / Math.cos(x), EPS);
     }
 
-    // ( - Pi / 2 + 2 * Pi * n; Pi / 2 + 2 * Pi * n )
     @ParameterizedTest
-    @ValueSource(doubles = {-13 * PI / 6, -5 * PI / 6, 10 * PI / 6, 23 * PI / 6})
-    @DisplayName("ыфвыаип") //todo назвать
-    public void secondAreaEq(double x) {
+    @ValueSource(doubles = {-19 * PI / 6, -5 * PI / 6, 8 * PI / 6, 17 * PI / 6})
+    @DisplayName("Test function in PI values")
+    public void piTest(double x) {
         Assertions.assertEquals(FunctionSec.calc(x), 1 / Math.cos(x), EPS);
     }
 }
