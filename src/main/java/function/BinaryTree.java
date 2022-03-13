@@ -12,7 +12,7 @@ public class BinaryTree {
     }
 
     private void recursiveInsert(TreeNode node, int value) {
-        if (node)
+//        if (node)
     }
 
     public void delete(int value) {
