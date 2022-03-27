@@ -4,13 +4,14 @@ public class Actor {
     int age;
     Gender gender;
     String name;
-    Condition condition = Condition.NORMAL;
+    Condition condition;
     Location location;
 
     public Actor(String name, int age, Location location) {
         setAge(age);
         this.name = name;
         this.location = location;
+        printInfo();
     }
 
     public Actor(String name, int age, Gender gender, Location location) {
@@ -18,6 +19,17 @@ public class Actor {
         this.gender = gender;
         this.name = name;
         this.location = location;
+        printInfo();
+    }
+
+    public void printInfo() {
+        String infoWithGender = "Создан персонаж " + getName() + " с возрастом " + getAge() + " и гендером " + getGender() + " на локации " + getLocation().getName();
+        String info = "Создан персонаж " + getName() + " с возрастом " + getAge() + " на локации " + getLocation().getName();
+        if (gender != null) {
+            System.out.println(infoWithGender);
+        } else {
+            System.out.println(info);
+        }
     }
 
     public void move(Location from, Location to) {

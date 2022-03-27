@@ -10,11 +10,6 @@ public class Location {
         System.out.println("Создана локация " + name + ", описание: " + description);
     }
 
-    public Location(String name) {
-        this.name = name;
-        System.out.println("Создана локация " + name);
-    }
-
     //getters
 
     public String getName() {
