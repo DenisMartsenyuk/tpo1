@@ -7,7 +7,11 @@ public class Location {
     public Location(String name, String description) {
         this.name = name;
         this.description = description;
-        System.out.println("Создана локация " + name + ", описание: " + description);
+//        System.out.println("Создана локация " + name + ", описание: " + description);
+    }
+
+    public String getCreationInfo() {
+        return "Создана локация " + name + ", описание: " + description + ". ";
     }
 
     //getters

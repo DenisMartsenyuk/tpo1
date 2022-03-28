@@ -11,7 +11,6 @@ public class Actor {
         setAge(age);
         this.name = name;
         this.location = location;
-        printInfo();
     }
 
     public Actor(String name, int age, Gender gender, Location location) {
@@ -19,69 +18,56 @@ public class Actor {
         this.gender = gender;
         this.name = name;
         this.location = location;
-        printInfo();
     }
 
-    public void printInfo() {
-        String infoWithGender = "Создан персонаж " + getName() + " с возрастом " + getAge() + " и гендером " + getGender() + " на локации " + getLocation().getName();
-        String info = "Создан персонаж " + getName() + " с возрастом " + getAge() + " на локации " + getLocation().getName();
+    public String getCreationInfo() {
+        String infoWithGender = "Создан персонаж " + getName() + " с возрастом " + getAge() + " и гендером " + getGender() + " на локации " + getLocation().getName() + ". ";
+        String info = "Создан персонаж " + getName() + " с возрастом " + getAge() + " на локации " + getLocation().getName() + ". ";
         if (gender != null) {
-            System.out.println(infoWithGender);
+            return infoWithGender;
         } else {
-            System.out.println(info);
+            return info;
         }
     }
 
-    public void move(Location from, Location to) {
+    public String move(Location from, Location to) {
         setLocation(to);
-        System.out.println(name + " перемещается из локации " + from.getName() + " в локацию " + to.getName());
+        return name + " перемещается из локации " + from.getName() + " в локацию " + to.getName() + ". ";
     }
 
-    public void showCondition() {
+    public String getHumanizedCondition() {
         switch (condition) {
             case CRY:
-                System.out.println(name + " плачет :'(");
-                break;
+                return name + " плачет :'(. ";
             case BORED:
-                System.out.println(name + " скучает");
-                break;
+                return name + " скучает. ";
             case SMILE:
-                System.out.println(name + " улыбается");
-                break;
+                return name + " улыбается. ";
             case NORMAL:
-                System.out.println(name + " в обычном состоянии");
-                break;
+                return name + " в обычном состоянии. ";
             case NEGATIVE:
-                System.out.println(name + " в негативном настроении");
-                break;
+                return name + " в негативном настроении. ";
             case POSITIVE:
-                System.out.println(name + " в хорошем настроении");
-                break;
+                return name + " в хорошем настроении. ";
             case INTERESTED:
-                System.out.println(name + " в заинтересованном состоянии");
-                break;
+                return name + " в заинтересованном состоянии. ";
             case NERVOUS:
-                System.out.println(name + " нервничает");
-                break;
+                return name + " нервничает. ";
             case STUNNED:
-                System.out.println(name + " ошеломлен!");
-                break;
+                return name + " ошеломлен! ";
             case SHOCKED:
-                System.out.println("У " + name + " отвисла челюсть");
-                break;
+                return "У " + name + " отвисла челюсть. ";
             default:
-                System.out.println(name + " в неопределенном состоянии");
-                break;
+                return name + " в неопределенном состоянии. ";
         }
     }
 
-    public void interact(String smthng, String discr) {
-        System.out.println(name + " взаимодействует с " + smthng + " (" + discr + ")");
+    public String interact(String smthng, String discr) {
+        return name + " взаимодействует с " + smthng + " (" + discr + "). ";
     }
 
-    public void inspectPlace(){
-        System.out.println(name + " осматривает место " + location.getName());
-        if(location.getDescription() != null) System.out.println(name + " получает информацию о месте: " + location.getDescription());
+    public String inspectPlace(){
+        return name + " осматривает место " + location.getName() + " и получает информацию о месте: " + location.getDescription() + ". ";
     }
 
     public int getAge() {
@@ -117,7 +103,6 @@ public class Actor {
 
     public void setCondition(Condition condition) {
         this.condition = condition;
-        showCondition();
     }
 
     public Location getLocation() {

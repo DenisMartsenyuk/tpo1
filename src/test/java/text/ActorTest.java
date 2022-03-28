@@ -48,33 +48,21 @@ class ActorTest {
     @Test
     @DisplayName("Test Actor inspect location")
     void inspectLocationTest() {
-        PrintStream defaultPrintStream = System.out;
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(output));
-        String expResult = "Артур осматривает место Локация А" + "\n" +
-                "Артур получает информацию о месте: Некая локация за пределами сцены" + "\n";
+        String expResult = "Артур осматривает место Локация А и получает информацию о месте: Некая локация за пределами сцены. ";
 
-        Artur.inspectPlace();
-        String sout = output.toString();
-        expResult = expResult.replaceAll("\n", "").replaceAll("\r", "");
-        sout = sout.replaceAll("\n", "").replaceAll("\r", "");
+        String sout = Artur.inspectPlace();
+
         assertEquals(expResult, sout);
-        System.setOut(defaultPrintStream);
     }
 
     @Test
     @DisplayName("Test Actor set condition")
     void setConditionTest() {
-        PrintStream defaultPrintStream = System.out;
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(output));
-        String expResult = "У Артур отвисла челюсть";
+        String expResult = "У Артур отвисла челюсть. ";
 
         Artur.setCondition(Condition.SHOCKED);
-        String sout = output.toString();
-        sout = sout.replaceAll("\n", "").replaceAll("\r", "");
+        String sout = Artur.getHumanizedCondition();
 
         assertEquals(expResult, sout);
-        System.setOut(defaultPrintStream);
     }
 }
